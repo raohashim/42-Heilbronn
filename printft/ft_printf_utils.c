@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrao <mrao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/23 14:51:23 by mrao              #+#    #+#             */
-/*   Updated: 2024/07/31 17:42:10 by mrao             ###   ########.fr       */
+/*   Created: 2024/07/31 17:35:38 by mrao              #+#    #+#             */
+/*   Updated: 2024/07/31 17:36:54 by mrao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <unistd.h>
-# include <stdlib.h>
+char	*ft_strdup(const char	*str)
+{
+	char	*dup_str;
+	int		i;
+	int		j;
 
-// To be removed only for testing
-# include <stdio.h>
-
-int ft_printf(const char *input, ...);
-int printf_char(int c);
-int printf_str(char *str);
-int printf_int(int d);
-char    *ft_strdup(const char	*str);
-
-#endif
+	i = 0;
+	j = 0;
+	while (str[i] != '\0')
+		i++;
+	dup_str = (char *)malloc((i + 1) * sizeof(char));
+	if (!dup_str)
+		return (NULL);
+	if (dup_str != NULL)
+	{
+		while (str[j] != '\0')
+		{
+			dup_str[j] = str[j];
+			j++;
+		}
+	}
+	dup_str[j] = '\0';
+	return (dup_str);
+}

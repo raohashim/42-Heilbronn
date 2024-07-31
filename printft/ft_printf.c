@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrao <mrao@student.42heilbronn.de>         +#+  +:+       +#+        */
+/*   By: mrao <mrao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 14:59:02 by mrao              #+#    #+#             */
-/*   Updated: 2024/07/31 09:11:44 by mrao             ###   ########.fr       */
+/*   Updated: 2024/07/31 17:43:52 by mrao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	main()
 {
 	int	result;
 
-	result = ft_printf("Hello, %s! You have %c new messages.\n", "Hashim", '9');
+	result = ft_printf("Hello, %s! You have %c new messages from %d user.\n", "Hashim", '9', 10000000);
 	printf("Printed characters: %d\n", result);
 
 	// result = ft_printf("This is a number: %d and this is a string: %s\n", 42, "test");
