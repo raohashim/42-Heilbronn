@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_int.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrao <mrao@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mrao <mrao@student.42heilbronn.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 07:19:22 by mrao              #+#    #+#             */
-/*   Updated: 2024/07/31 17:37:32 by mrao             ###   ########.fr       */
+/*   Updated: 2024/08/02 01:27:52 by mrao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,3 +89,26 @@ int	printf_int(int d)
 	free(str_itoa);
 	return (i);
 }
+
+// int	printf_int_new(int d, int base)
+// {
+// 	int		count;
+// 	char	*symbols;
+
+// 	if (d == -2147483648)
+// 		return (ft_strdup("-2147483648"));
+// 	symbols = "0123456789abcdef";
+// 	if (d < 0)
+// 	{
+// 		write (1, "-", 1);
+// 		d = d * -1;
+// 		return (printf_int_new(d, base) + 1);
+// 	}
+// 	else if (d < base)
+// 		return (printf_char(symbols[d]));
+// 	else
+// 	{
+// 		count = printf_int_new(d / base, base);
+// 		return (count + printf_int_new(d % base, base));
+// 	}
+// }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrao <mrao@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mrao <mrao@student.42heilbronn.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 14:59:02 by mrao              #+#    #+#             */
-/*   Updated: 2024/07/31 17:43:52 by mrao             ###   ########.fr       */
+/*   Updated: 2024/08/02 01:29:28 by mrao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ int	print_conv(char specifier, va_list ap)
 	else if (specifier == 'd' || specifier == 'i')
 		count += printf_int(va_arg(ap, int));
 	// else if (specifier == 'p')
-	// 	count += printf_ptr((unsigned long)(va_arg(ap, void *)));
+	// 	count += printf_ptr((va_arg(ap, unsigned long *)));
 	// else if (specifier == 'u')
 	// 	count += printf_nbr_unsigned(va_arg(ap, unsigned int));
 	// else if (specifier == 'x')
-	// 	count += printf_hex(va_arg(ap, unsigned int), 0);
+	// 	count += printf_int_new((long)va_arg(ap, unsigned int), 16);
 	// else if (specifier == 'X')
-	// 	count += printf_hex(va_arg(ap, unsigned int), 1);
+	// 	count += printf_hex(va_arg(ap, unsigned int), 16);
 	// else if (specifier == '%')
 	// 	count += printf_char_per('%');
 	return (count);
@@ -76,11 +76,15 @@ int	main()
 {
 	int	result;
 
-	result = ft_printf("Hello, %s! You have %c new messages from %d user.\n", "Hashim", '9', 10000000);
-	printf("Printed characters: %d\n", result);
+	result = ft_printf("Hello, %s! You have %c new messages from %d user.\n", "Hashim", '9', -2147483649);
+	// result = printf("Hello, %s! You have %c new messages from %d user.\n", "Hashim", '9', -2147483648);
 
-	// result = ft_printf("This is a number: %d and this is a string: %s\n", 42, "test");
-	// printf("Printed characters: %d\n", result);
+	ft_printf("Printed characters: %d\n", result);
+	ft_printf("-------");
+	ft_printf("\n");
+	result = ft_printf("This is a number: %d and %i this is a string: %s\n", -42, -5322, "test");
+	ft_printf("Printed characters: %d\n", result);
+	
 
 	return (0);
 }
