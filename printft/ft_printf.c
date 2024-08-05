@@ -6,7 +6,7 @@
 /*   By: mrao <mrao@student.42heilbronn.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 14:59:02 by mrao              #+#    #+#             */
-/*   Updated: 2024/08/05 22:12:13 by mrao             ###   ########.fr       */
+/*   Updated: 2024/08/05 23:31:26 by mrao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	print_conv(char specifier, va_list ap)
 		count += printf_int(va_arg(ap, int));
 	else if (specifier == 'p')
 		count += printf_ptr((va_arg(ap, unsigned long long)));
-	// else if (specifier == 'u')
-	// 	count += printf_nbr_unsigned(va_arg(ap, unsigned int));
+	else if (specifier == 'u')
+		count += printf_unsigned(va_arg(ap, unsigned int));
 	// else if (specifier == 'x')
 	// 	count += printf_int_new((long)va_arg(ap, unsigned int), 16);
 	// else if (specifier == 'X')
@@ -72,65 +72,30 @@ int	ft_printf(const char *format_str, ...)
 	return (char_count);
 }
 
-// int	main()
-// {
-// 	int	result;
+// Your main function
+int main() {
 
-// 	result = ft_printf("Hello, %s! You have %c new messages from %d user.\n", "Hashim", '9', -2147483649);
-// 	// result = printf("Hello, %s! You have %c new messages from %d user.\n", "Hashim", '9', -2147483648);
+    // Test the custom and standard printf with %u
+    int test_values[] = {-42, -55, 0, 1, 42, 1234567890};
+    int num_tests = sizeof(test_values) / sizeof(test_values[0]);
 
-// 	ft_printf("Printed characters: %d\n", result);
-// 	ft_printf("-------");
-// 	ft_printf("\n");
-// 	result = ft_printf("This is a number: %d and %i this is a string: %s\n", -42, -5322, "test");
-// 	ft_printf("Printed characters: %d\n", result);
+    for (int i = 0; i < num_tests; i++) {
+        int value = test_values[i];
 
-// 	return (0);
-// }
-// void	test_printf_ptr(void)
-// {
-// 	unsigned long long ptr1 = 0;
-// 	unsigned long long ptr2 = 123456789;
-// 	unsigned long long ptr3 = (unsigned long long)&ptr1;
-// 	unsigned long long ptr4 = (unsigned long long)&ptr2;
-// 	unsigned long long ptr5 = (unsigned long long)&test_printf_ptr;
+        printf("Testing value: %i\n", value);
 
-// 	int len;
+        // Using custom ft_printf with %u
+        printf("Custom ft_printf: ");
+        int custom_len = ft_printf("%i\n", value);
+        ft_printf("Length: %d\n", custom_len);
 
-// 	printf("Testing with NULL pointer:\n");
-// 	len = printf_ptr(ptr1);
-// 	printf("\nLength: %d\n", len);
-// 	printf("Expected: %p\n", (void *)ptr1);
-// 	printf("Length (printf): %d\n\n", printf("%p", (void *)ptr1));
+        // Using standard printf with %u
+        printf("Standard printf: ");
+        int standard_len = printf("%i\n", value);
+        printf("Length: %d\n", standard_len);
 
-// 	printf("Testing with regular number (123456789):\n");
-// 	len = printf_ptr(ptr2);
-// 	printf("\nLength: %d\n", len);
-// 	printf("Expected: %p\n", (void *)ptr2);
-// 	printf("Length (printf): %d\n\n", printf("%p", (void *)ptr2));
+        printf("\n");
+    }
 
-// 	printf("Testing with memory address of ptr1:\n");
-// 	len = printf_ptr(ptr3);
-// 	printf("\nLength: %d\n", len);
-// 	printf("Expected: %p\n", (void *)ptr3);
-// 	printf("Length (printf): %d\n\n", printf("%p", (void *)ptr3));
-
-// 	printf("Testing with memory address of ptr2:\n");
-// 	len = printf_ptr(ptr4);
-// 	printf("\nLength: %d\n", len);
-// 	printf("Expected: %p\n", (void *)ptr4);
-// 	printf("Length (printf): %d\n\n", printf("%p", (void *)ptr4));
-
-// 	printf("Testing with memory address of test_printf_ptr function:\n");
-// 	len = printf_ptr(ptr5);
-// 	printf("\nLength: %d\n", len);
-// 	printf("Expected: %p\n", (void *)ptr5);
-// 	printf("Length (printf): %d\n\n", printf("%p", (void *)ptr5));
-// }
-
-// // Main function
-// int	main(void)
-// {
-// 	test_printf_ptr();
-// 	return (0);
-// }
+    return (0);
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrao <mrao@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mrao <mrao@student.42heilbronn.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 17:35:38 by mrao              #+#    #+#             */
-/*   Updated: 2024/07/31 17:36:54 by mrao             ###   ########.fr       */
+/*   Updated: 2024/08/05 23:26:20 by mrao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,15 @@ char	*ft_strdup(const char	*str)
 	}
 	dup_str[j] = '\0';
 	return (dup_str);
+}
+
+char	*ft_malloc(int len)
+{
+	char	*mem;
+
+	mem = malloc(len + 1);
+	if (!mem)
+		return (NULL);
+	mem[len] = '\0';
+	return (mem);
 }

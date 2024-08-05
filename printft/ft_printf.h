@@ -6,7 +6,7 @@
 /*   By: mrao <mrao@student.42heilbronn.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 14:51:23 by mrao              #+#    #+#             */
-/*   Updated: 2024/08/05 21:50:48 by mrao             ###   ########.fr       */
+/*   Updated: 2024/08/05 22:51:27 by mrao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,13 @@
 
 char	*ft_strchr(const char *str, int ch);
 char	*ft_strdup(const char	*str);
+char	*ft_malloc(int len);
 int		ft_printf(const char *input, ...);
 int		printf_char(int c);
 int		printf_str(char *str);
 int		printf_int(int d);
 int		printf_ptr(unsigned long long num);
+int		printf_unsigned(unsigned int nbr);
 // int		printf_int_new(int d, int base);
 
 #endif

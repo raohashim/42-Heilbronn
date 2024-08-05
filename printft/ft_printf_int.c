@@ -6,7 +6,7 @@
 /*   By: mrao <mrao@student.42heilbronn.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 07:19:22 by mrao              #+#    #+#             */
-/*   Updated: 2024/08/04 19:37:54 by mrao             ###   ########.fr       */
+/*   Updated: 2024/08/05 23:31:47 by mrao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,6 @@ int	ft_num_len(int n)
 		len++;
 	}
 	return (len);
-}
-
-char	*ft_itoa_malloc(int len)
-{
-	char	*mem;
-
-	mem = malloc(len + 1);
-	if (!mem)
-		return (NULL);
-	mem[len] = '\0';
-	return (mem);
 }
 
 void	ft_fill_str(char *str, int n, int len)
@@ -69,7 +58,7 @@ char	*ft_itoa(int n)
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
 	len = ft_num_len(n);
-	str = ft_itoa_malloc(len);
+	str = ft_malloc(len);
 	if (!str)
 		return (NULL);
 	ft_fill_str(str, n, len);
