@@ -6,7 +6,7 @@
 /*   By: mrao <mrao@student.42heilbronn.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 14:59:02 by mrao              #+#    #+#             */
-/*   Updated: 2024/08/08 17:15:41 by mrao             ###   ########.fr       */
+/*   Updated: 2024/08/08 17:31:03 by mrao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	print_conv(char specifier, va_list ap)
 		count += printf_unsigned(va_arg(ap, unsigned int));
 	else if (specifier == 'x' || specifier == 'X')
 		count += printf_hex((long)va_arg(ap, unsigned int), specifier);
-	// else if (specifier == '%')
-	// 	count += printf_char_per('%');
+	else if (specifier == '%')
+		count += write (1, "%", 1);
 	return (count);
 }
 
@@ -80,9 +80,9 @@ int	main()
 	int				cnt_print;
 
 	// Basic positive number
-	num = 255;
-	cnt_print = printf("Standard printf: Hexadecimal lowercase: %x\n", num);
-	cnt = ft_printf("ft_printf      : Hexadecimal lowercase: %x\n", num);
+	num = 962927349;
+	cnt_print = printf("Standard %% %% %% %% printf: Hexadecimal lowercase: %x\n", num);
+	cnt = ft_printf("ft_printf       %% %% %% %%: Hexadecimal lowercase: %x\n", num);
 	ft_printf("Char count - printf: %d, ft_printf: %d\n", cnt_print, cnt);
 
 	cnt_print = printf("Standard printf: Hexadecimal uppercase: %X\n", num);
