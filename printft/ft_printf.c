@@ -6,7 +6,7 @@
 /*   By: mrao <mrao@student.42heilbronn.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 14:59:02 by mrao              #+#    #+#             */
-/*   Updated: 2024/08/05 23:31:26 by mrao             ###   ########.fr       */
+/*   Updated: 2024/08/08 17:15:41 by mrao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,8 @@ int	print_conv(char specifier, va_list ap)
 		count += printf_ptr((va_arg(ap, unsigned long long)));
 	else if (specifier == 'u')
 		count += printf_unsigned(va_arg(ap, unsigned int));
-	// else if (specifier == 'x')
-	// 	count += printf_int_new((long)va_arg(ap, unsigned int), 16);
-	// else if (specifier == 'X')
-	// 	count += printf_hex(va_arg(ap, unsigned int), 16);
+	else if (specifier == 'x' || specifier == 'X')
+		count += printf_hex((long)va_arg(ap, unsigned int), specifier);
 	// else if (specifier == '%')
 	// 	count += printf_char_per('%');
 	return (count);
@@ -72,30 +70,78 @@ int	ft_printf(const char *format_str, ...)
 	return (char_count);
 }
 
-// Your main function
-int main() {
+#include <stdio.h>
+#include <limits.h>
 
-    // Test the custom and standard printf with %u
-    int test_values[] = {-42, -55, 0, 1, 42, 1234567890};
-    int num_tests = sizeof(test_values) / sizeof(test_values[0]);
+int	main()
+{
+	unsigned int	num;
+	int				cnt;
+	int				cnt_print;
 
-    for (int i = 0; i < num_tests; i++) {
-        int value = test_values[i];
+	// Basic positive number
+	num = 255;
+	cnt_print = printf("Standard printf: Hexadecimal lowercase: %x\n", num);
+	cnt = ft_printf("ft_printf      : Hexadecimal lowercase: %x\n", num);
+	ft_printf("Char count - printf: %d, ft_printf: %d\n", cnt_print, cnt);
 
-        printf("Testing value: %i\n", value);
+	cnt_print = printf("Standard printf: Hexadecimal uppercase: %X\n", num);
+	cnt = ft_printf("ft_printf      : Hexadecimal uppercase: %X\n", num);
+	ft_printf("Char count - printf: %d, ft_printf: %d\n", cnt_print, cnt);
 
-        // Using custom ft_printf with %u
-        printf("Custom ft_printf: ");
-        int custom_len = ft_printf("%i\n", value);
-        ft_printf("Length: %d\n", custom_len);
+	ft_printf("---------------------\n");
 
-        // Using standard printf with %u
-        printf("Standard printf: ");
-        int standard_len = printf("%i\n", value);
-        printf("Length: %d\n", standard_len);
+	// Testing zero
+	num = 0;
+	cnt_print = printf("Standard printf: Hexadecimal lowercase: %x\n", num);
+	cnt = ft_printf("ft_printf      : Hexadecimal lowercase: %x\n", num);
+	ft_printf("Char count - printf: %d, ft_printf: %d\n", cnt_print, cnt);
 
-        printf("\n");
-    }
+	cnt_print = printf("Standard printf: Hexadecimal uppercase: %X\n", num);
+	cnt = ft_printf("ft_printf      : Hexadecimal uppercase: %X\n", num);
+	ft_printf("Char count - printf: %d, ft_printf: %d\n", cnt_print, cnt);
 
-    return (0);
+	ft_printf("---------------------\n");
+
+	// Maximum unsigned int value
+	num = UINT_MAX;
+	cnt_print = printf("Standard printf: Hexadecimal lowercase: %x\n", num);
+	cnt = ft_printf("ft_printf      : Hexadecimal lowercase: %x\n", num);
+	ft_printf("Char count - printf: %d, ft_printf: %d\n", cnt_print, cnt);
+
+	cnt_print = printf("Standard printf: Hexadecimal uppercase: %X\n", num);
+	cnt = ft_printf("ft_printf      : Hexadecimal uppercase: %X\n", num);
+	ft_printf("Char count - printf: %d, ft_printf: %d\n", cnt_print, cnt);
+
+	ft_printf("---------------------\n");
+
+	// Negative value treated as unsigned
+	num = -1;
+	cnt_print = printf("Standard printf: Hexadecimal lowercase: %x\n", num);
+	cnt = ft_printf("ft_printf      : Hexadecimal lowercase: %x\n", num);
+	ft_printf("Char count - printf: %d, ft_printf: %d\n", cnt_print, cnt);
+
+	cnt_print = printf("Standard printf: Hexadecimal uppercase: %X\n", num);
+	cnt = ft_printf("ft_printf      : Hexadecimal uppercase: %X\n", num);
+	ft_printf("Char count - printf: %d, ft_printf: %d\n", cnt_print, cnt);
+
+	ft_printf("---------------------\n");
+
+	// Testing with specific edge values
+	num = 16;
+	cnt_print = printf("Standard printf: Hexadecimal lowercase: %x\n", num);
+	cnt = ft_printf("ft_printf      : Hexadecimal lowercase: %x\n", num);
+	ft_printf("Char count - printf: %d, ft_printf: %d\n", cnt_print, cnt);
+
+	num = 15;
+	cnt_print = printf("Standard printf: Hexadecimal lowercase: %x\n", num);
+	cnt = ft_printf("ft_printf      : Hexadecimal lowercase: %x\n", num);
+	ft_printf("Char count - printf: %d, ft_printf: %d\n", cnt_print, cnt);
+
+	num = 1;
+	cnt_print = printf("Standard printf: Hexadecimal lowercase: %x\n", num);
+	cnt = ft_printf("ft_printf      : Hexadecimal lowercase: %x\n", num);
+	ft_printf("Char count - printf: %d, ft_printf: %d\n", cnt_print, cnt);
+
+	return (0);
 }

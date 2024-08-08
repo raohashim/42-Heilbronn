@@ -6,7 +6,7 @@
 /*   By: mrao <mrao@student.42heilbronn.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 14:51:23 by mrao              #+#    #+#             */
-/*   Updated: 2024/08/05 22:51:27 by mrao             ###   ########.fr       */
+/*   Updated: 2024/08/08 16:44:06 by mrao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ int		printf_str(char *str);
 int		printf_int(int d);
 int		printf_ptr(unsigned long long num);
 int		printf_unsigned(unsigned int nbr);
-// int		printf_int_new(int d, int base);
+int	    printf_hex(unsigned int hxd, char symbol);
 
 #endif
