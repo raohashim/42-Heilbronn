@@ -6,7 +6,7 @@
 /*   By: mrao <mrao@student.42heilbronn.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 22:35:43 by mrao              #+#    #+#             */
-/*   Updated: 2024/08/05 23:27:51 by mrao             ###   ########.fr       */
+/*   Updated: 2024/08/10 08:25:42 by mrao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,3 @@ int	printf_unsigned(unsigned int nbr)
 	free(str_itoa);
 	return (i);
 }
-

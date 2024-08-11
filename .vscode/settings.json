@@ -1,5 +1,7 @@
 {
     "files.associations": {
         "unistd.h": "c"
-    }
+    },
+    "42header.email": "mrao@student.42heilbronn.de",
+    "42header.username": "mrao"
 }
