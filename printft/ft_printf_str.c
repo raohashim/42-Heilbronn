@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_str.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrao <mrao@student.42heilbronn.de>         +#+  +:+       +#+        */
+/*   By: mrao <mrao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 06:40:11 by mrao              #+#    #+#             */
-/*   Updated: 2024/08/11 15:16:28 by mrao             ###   ########.fr       */
+/*   Updated: 2024/08/25 18:01:17 by mrao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,16 @@ int	printf_str(char *str)
 	i = 0;
 	if (!str)
 	{
-		i += 6;
-		write(1, "(null)", 6);
-		return (i);
+		if (write(1, "(null)", 6) == -1)
+			return (-1);
+		return (6);
 	}
-	while (str[i])
+	while (*str != '\0')
 	{
-		printf_char((int)str[i]);
+		if (write(1, str, 1) == -1)
+			return (-1);
 		i++;
+		str++;
 	}
 	return (i);
 }

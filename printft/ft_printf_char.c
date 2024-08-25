@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_char.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrao <mrao@student.42heilbronn.de>         +#+  +:+       +#+        */
+/*   By: mrao <mrao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 09:27:01 by mrao              #+#    #+#             */
-/*   Updated: 2024/07/31 07:17:42 by mrao             ###   ########.fr       */
+/*   Updated: 2024/08/25 16:14:44 by mrao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	printf_char(int c)
+int	printf_char(char c)
 {
 	return (write (1, &c, 1));
 }

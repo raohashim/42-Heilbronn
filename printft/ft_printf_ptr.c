@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_ptr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrao <mrao@student.42heilbronn.de>         +#+  +:+       +#+        */
+/*   By: mrao <mrao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 13:57:24 by mrao              #+#    #+#             */
-/*   Updated: 2024/08/05 22:11:05 by mrao             ###   ########.fr       */
+/*   Updated: 2024/08/25 18:28:51 by mrao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,19 @@ void	ft_put_ptr_rec(unsigned long long num, int *len)
 		ft_put_hex_digit(num, len);
 }
 
-int	printf_ptr(unsigned long long num)
+int	printf_ptr(void *ptr)
 {
 	int	len;
 
 	len = 0;
-	if (num == 0)
-		len += printf_str("(nil)");
+	if (ptr == 0)
+		len += printf_str("0x0");
 	else
 	{
-		printf_str("0x");
+		if (printf_str("0x") == -1)
+			return (-1);
 		len += 2;
-		ft_put_ptr_rec(num, &len);
+		ft_put_ptr_rec((unsigned long long)ptr, &len);
 	}
 	return (len);
 }
