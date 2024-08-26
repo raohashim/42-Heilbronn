@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_ptr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrao <mrao@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mrao <mrao@student.42heilbronn.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 13:57:24 by mrao              #+#    #+#             */
-/*   Updated: 2024/08/25 18:28:51 by mrao             ###   ########.fr       */
+/*   Updated: 2024/08/26 17:33:22 by mrao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,13 @@ int	printf_ptr(void *ptr)
 	int	len;
 
 	len = 0;
-	if (ptr == 0)
-		len += printf_str("0x0");
-	else
+	if (ptr == NULL)
 	{
-		if (printf_str("0x") == -1)
-			return (-1);
-		len += 2;
-		ft_put_ptr_rec((unsigned long long)ptr, &len);
+		return (write (1, "(nil)", 5));
 	}
+	if (write (1, "0x", 2) == -1)
+		return (-1);
+	len += 2;
+	ft_put_ptr_rec((unsigned long long )ptr, &len);
 	return (len);
 }

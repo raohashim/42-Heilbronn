@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_hex.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrao <mrao@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mrao <mrao@student.42heilbronn.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 16:38:44 by mrao              #+#    #+#             */
-/*   Updated: 2024/08/25 18:23:58 by mrao             ###   ########.fr       */
+/*   Updated: 2024/08/26 14:34:01 by mrao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	printf_hex(unsigned long hxd, char symbol)
 		base = "0123456789abcdef";
 	else
 		base = "0123456789ABCDEF";
-	if (hxd > 16)
+	if (hxd > 15)
 	{
 		temp_xd = printf_hex(hxd / 16, symbol);
 		if (temp_xd == -1)

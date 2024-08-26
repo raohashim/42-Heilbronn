@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrao <mrao@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mrao <mrao@student.42heilbronn.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 14:59:02 by mrao              #+#    #+#             */
-/*   Updated: 2024/08/25 18:14:13 by mrao             ###   ########.fr       */
+/*   Updated: 2024/08/26 17:24:54 by mrao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,3 +71,13 @@ int	ft_printf(const char *format_str, ...)
 	va_end(ap);
 	return (char_count);
 }
+
+// #include <stdio.h>
+// int main()
+// {
+// 	int a = printf(" %p %p \n", (void*)0, (void*)0);
+// 	int b = ft_printf(" %p %p \n", (void*)0, (void*)0);
+// 	printf("\n\n");
+// 	printf("a = %d\n", a);
+// 	printf("b = %d\n", b);
+// }
