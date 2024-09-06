@@ -6,7 +6,7 @@
 /*   By: mrao <mrao@student.42heilbronn.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 13:57:24 by mrao              #+#    #+#             */
-/*   Updated: 2024/08/26 17:33:22 by mrao             ###   ########.fr       */
+/*   Updated: 2024/09/06 14:56:38 by mrao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	printf_ptr(void *ptr)
 	len = 0;
 	if (ptr == NULL)
 	{
-		return (write (1, "(nil)", 5));
+		return (write (1, "0x0", 3));
 	}
 	if (write (1, "0x", 2) == -1)
 		return (-1);
